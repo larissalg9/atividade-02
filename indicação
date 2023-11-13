@@ -1,0 +1,17 @@
+## 1- Pesquise e indique como seria possível manter estado em múltiplas execuções, visto que a aplicação armazena os dados em um sqlite rodando no próprio container ##
+
+Persistência de Dados em Ambientes Kubernetes
+Quando se trata de aplicações em contêineres, é crucial considerar estratégias para a persistência de dados, especialmente em ambientes como Kubernetes, onde os contêineres podem ser escalonados horizontalmente e distribuídos em diferentes nós.
+
+1. Volume para Persistência de Dados SQLite:
+Para manter o estado em várias execuções, é recomendável utilizar volumes persistentes no Kubernetes para armazenar os dados do SQLite fora do contêiner.
+Defina um volume persistente no manifesto de Deployment para armazenar o banco de dados SQLite.
+
+2. Persistência de Dados em Banco de Dados Externo:
+Considere migrar de SQLite para um banco de dados mais robusto como PostgreSQL, MySQL ou outro compatível com Django.
+Configurar o Django para utilizar um banco de dados externo permite a persistência dos dados entre as instâncias da aplicação.
+
+3. Migrações de Banco de Dados:
+Ao atualizar o esquema do banco de dados, utilize ferramentas de migração do Django.
+Execute comandos como python manage.py makemigrations e python manage.py migrate para garantir que as alterações no banco de dados sejam gerenciadas de forma consistente.
+Essas abordagens ajudarão a garantir que os dados sejam persistentes e compartilhados entre várias instâncias da aplicação, tornando-a mais adequada para ambientes escaláveis, como o Kubernetes.
